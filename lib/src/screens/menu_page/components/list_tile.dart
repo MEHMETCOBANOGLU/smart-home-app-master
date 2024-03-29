@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smart360/config/size_config.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,8 +21,9 @@ class MenuListItems extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Row(
+          
           children: [
-            SvgPicture.asset(iconPath),
+            SvgPicture.asset(iconPath,width: 30,height: 30,),
             SizedBox(
               width: getProportionateScreenWidth(25),
             ),

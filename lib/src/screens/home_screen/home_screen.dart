@@ -79,6 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Text(
                           "${username}",
                           style: Theme.of(context).textTheme.displayLarge,
+                             overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
                         ),
                       ),
                       Container(
@@ -116,34 +118,41 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Row(
                     children: [
-                      Expanded(
-                        child: TabBar(
-                          dividerColor: Colors.amber,
-                          //dividerHeight: 3,
-                          isScrollable: true,
-                          unselectedLabelColor: Colors.white.withOpacity(0.3),
-                          indicatorColor: const Color(0xFF464646),
-                          tabs: s.child("devices").children.map(
-                            (child) {
-                              return (Tab(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      child
-                                          .child("config")
-                                          .child("title")
-                                          .value
-                                          .toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displaySmall,
-                                    ),
-                                  ],
-                                ),
-                              ));
-                            },
-                          ).toList(),
-                        ),
+                      FutureBuilder(
+                        future: querry.getTabsName(userId),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<List<String>> snapshot) {
+                          if (snapshot.hasData) {
+                            return Expanded(
+                              child: TabBar(
+                                dividerColor: Colors.amber,
+                                //dividerHeight: 3,
+                                isScrollable: true,
+                                unselectedLabelColor:
+                                    Colors.white.withOpacity(0.3),
+                                indicatorColor: const Color(0xFF464646),
+                                tabs: snapshot.data!.map(
+                                  (tmp) {
+                                    return (Tab(
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            tmp,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displaySmall,
+                                          ),
+                                        ],
+                                      ),
+                                    ));
+                                  },
+                                ).toList(),
+                              ),
+                            );
+                          } else {
+                            return Expanded  (child: Center (child:CircularProgressIndicator(color: Colors.amber)));
+                          }
+                        },
                       ),
                       IconButton(
                           onPressed: () {
@@ -162,17 +171,37 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               drawer: SizedBox(
                   width: getProportionateScreenWidth(270), child: const Menu()),
-              body: TabBarView(
-                children: s.child("devices").children.map(
-                  (child) {
-                    return (Body(
-                      model: model,
-                      uid: userId,
-                      sn: child.key.toString(),
-                    ));
-                  },
-                ).toList(),
+              body: FutureBuilder(
+                future: querry.getTabsBody(userId),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<String>> snapshot) {
+                  if (snapshot.hasData) {
+                    return TabBarView(
+                        children: snapshot.data!.map(
+                      (e) {
+                        return (Body(
+                          model: model,
+                          uid: userId,
+                          sn: e,
+                        ));
+                      },
+                    ).toList());
+                  } else {
+                    return  Center (child:CircularProgressIndicator(color: Colors.amber,));
+                  }
+                },
               ),
+
+              // s.child("devices").children.map(
+              //   (child) {
+              //     return (Body(
+              //       model: model,
+              //       uid: userId,
+              //       sn: child.key.toString(),
+              //     ));
+              //   },
+              // ).toList(),
+
               //bottomNavigationBar: CustomBottomNavBar(model: model),
             ),
           );

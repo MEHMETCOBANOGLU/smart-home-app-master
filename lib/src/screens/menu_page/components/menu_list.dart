@@ -1,6 +1,9 @@
+import 'package:smart360/config/size_config.dart';
 import 'package:smart360/service/auth_service.dart';
+
 import 'package:smart360/src/screens/login_screen/login_screen.dart';
 import 'package:smart360/src/screens/menu_page/components/list_tile.dart';
+import 'package:smart360/src/screens/menu_page/components/weather_container.dart';
 import 'package:smart360/src/screens/stats_screen/stats_screen.dart';
 import 'package:smart360/src/screens/savings_screen/savings_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +22,7 @@ class _MenuListState extends State<MenuList> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        WeatherContainer(),
         //MenuListItem is custom tile in list_tile file
         MenuListItems(
           iconPath: 'assets/icons/menu_icons/stats.svg',
@@ -39,23 +43,21 @@ class _MenuListState extends State<MenuList> {
             Navigator.of(context).pushNamed(SavingsScreen.routeName);
           },
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: MenuListItems(
-            iconPath: 'assets/icons/menu_icons/settings.svg',
-            itemName: 'Ayarlar',
-            function: () {},
-          ),
+        MenuListItems(
+          iconPath: 'assets/icons/menu_icons/settings.svg',
+          itemName: 'Ayarlar',
+          function: () {},
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: MenuListItems(
-            iconPath: 'assets/icons/menu_icons/notifications.svg',
-            itemName: 'Bildirimler',
-            function: () {},
-          ),
+
+        MenuListItems(
+          iconPath: 'assets/icons/menu_icons/notifications.svg',
+          itemName: 'Bildirimler',
+          function: () {},
         ),
-        ListTile(
+        Divider(),
+        Center(
+            child: ListTile(
+          contentPadding: EdgeInsets.all(5),
           onTap: () async {
             showDialog(
                 barrierDismissible: false,
@@ -92,20 +94,20 @@ class _MenuListState extends State<MenuList> {
                   );
                 });
           },
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 30, vertical: 1),
           leading: const Icon(
+            color: Colors.red,
             Icons.exit_to_app_rounded,
-            size: 36,
+            size: 50,
           ),
           title: const Text(
             "Çıkış Yap",
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.w300,
+              //fontFamily: 'Lexend',
+              fontWeight: FontWeight.bold,
             ),
           ),
-        )
+        )),
       ],
     );
   }

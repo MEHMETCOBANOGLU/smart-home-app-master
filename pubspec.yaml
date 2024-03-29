@@ -11,6 +11,8 @@ dependencies:
   cached_network_image: ^3.2.0
   cloud_firestore: ^4.13.5
   cupertino_icons: ^1.0.2
+  http: ^1.1.0
+  dio: ^5.4.1
   dotted_border: ^2.0.0+2
   firebase_auth: ^4.15.3
   firebase_core: ^2.24.2
@@ -22,8 +24,10 @@ dependencies:
   flutter_screenutil: ^5.3.1
   flutter_svg: ^2.0.7
   font_awesome_flutter: ^10.4.0
+  geocoding: ^2.2.1+1
+  geolocator: ^11.0.0
   get_it: ^7.2.0
-  google_fonts: ^6.1.0
+  google_fonts: ^4.0.4
   image_picker: ^0.8.4+11
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
@@ -61,6 +65,7 @@ flutter:
     - assets/icons/svg/
     - assets/Lottie/
     - assets/icons/menu_icons/
+    - assets/icons/device_icons/
 
   fonts:
     - family: "Noto Sans"

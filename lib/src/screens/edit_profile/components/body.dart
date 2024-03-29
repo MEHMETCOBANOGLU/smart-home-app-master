@@ -35,6 +35,9 @@ class _BodyState extends State<Body> {
 
     setState(() {
       user = tmp;
+
+      nameController.text=user.getUserName!;
+      emailController.text=user.getUserEmail!;
     });
   }
 

@@ -6,12 +6,14 @@ import 'package:smart360/src/screens/menu_page/components/menu_list.dart';
 import 'package:smart360/src/screens/menu_page/menu_screen.dart';
 
 class Body extends StatelessWidget {
-
   const Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return 
+    SingleChildScrollView(child: 
+    
+      Padding(
         padding: EdgeInsets.only(
           left: getProportionateScreenWidth(20),
           right: getProportionateScreenWidth(20),
@@ -45,19 +47,19 @@ class Body extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: getProportionateScreenHeight(80),
+                  Padding(
+                    padding: EdgeInsets.all(getProportionateScreenHeight(5)),
                   ),
-                   Padding(
-              padding: EdgeInsets.all(getProportionateScreenHeight(5)),
-             
-            ),
-
                   MenuList(),
                 ],
               ),
             ),
           ],
-        ));
-  }
+        ))
+
+    
+    ,);
+    
+    
+    }
 }

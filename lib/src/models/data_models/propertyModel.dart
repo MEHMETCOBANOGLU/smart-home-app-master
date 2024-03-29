@@ -1,63 +1,31 @@
 import 'dart:ui';
 
-
 class PropertyModel {
-<<<<<<< Updated upstream
-
-String? propertyName="";  
-String? iconUrl="";
-String? pinNo="";
-String? pinIO="";
-String? pinVal="";
-
-=======
   String? propertyName = "";
+  String? iconUrl = "";
   String? pinNo = "";
   String? pinIO = "";
   String? pinVal = "";
-  String? itsOn = "";
-  String? propertyIcon = "";
-  String? componentId = "";
->>>>>>> Stashed changes
 
+  Function({String? val})? updateFunc;
 
+  VoidCallback? updateValue;
 
-<<<<<<< Updated upstream
-Function({String? val})? updateFunc;
-
-// VoidCallback? updateValue;
-
-
- PropertyModel({
-     this. propertyName="",
-     this. iconUrl="",
-     this. pinNo="",
-     this. pinIO="",
-     this. pinVal="",
-  
-    // this.updateValue,
-=======
   PropertyModel({
     this.propertyName = "",
+    this.iconUrl = "",
     this.pinNo = "",
     this.pinIO = "",
     this.pinVal = "",
-    this.itsOn = "",
-    this.propertyIcon = "",
-    this.componentId = "",
-    this.updateValue,
->>>>>>> Stashed changes
+
+    // this.updateValue,
     this.updateFunc,
   });
 
- Function({String? val}) get getUpdateFunc => this.updateFunc!;
+  Function({String? val}) get getUpdateFunc => this.updateFunc!;
 
- set setUpdateFunc(Function(String? updateFunc)) => this.updateFunc = updateFunc;
-
-//  VoidCallback get getUpdateValue => this.updateValue!;
-
-//  set setUpdateValue(VoidCallback updateValue) => this.updateValue = updateValue; 
-
+  set setUpdateFunc(Function(String? updateFunc)) =>
+      this.updateFunc = updateFunc;
 
   VoidCallback get getUpdateValue => this.updateValue!;
 
@@ -78,18 +46,9 @@ Function({String? val})? updateFunc;
 
   String? get getPinVal => this.pinVal;
 
+  set setPinVal(String? pinVal) => this.pinVal = pinVal;
 
+  String? get getItsOn => this.itsOn;
 
   set setItsOn(String? itsOn) => this.itsOn = itsOn;
-<<<<<<< Updated upstream
-=======
-
-  String? get getPropertyIcon => this.propertyIcon;
-
-  set setPropertyIcon(String? propertyIcon) => this.propertyIcon = propertyIcon;
-
-  String? get getComponentId => this.componentId;
-
-  set setComponentId(String? componentId) => this.componentId = componentId;
->>>>>>> Stashed changes
 }
