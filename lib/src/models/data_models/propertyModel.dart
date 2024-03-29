@@ -2,6 +2,7 @@ import 'dart:ui';
 
 
 class PropertyModel {
+<<<<<<< Updated upstream
 
 String? propertyName="";  
 String? iconUrl="";
@@ -9,9 +10,19 @@ String? pinNo="";
 String? pinIO="";
 String? pinVal="";
 
+=======
+  String? propertyName = "";
+  String? pinNo = "";
+  String? pinIO = "";
+  String? pinVal = "";
+  String? itsOn = "";
+  String? propertyIcon = "";
+  String? componentId = "";
+>>>>>>> Stashed changes
 
 
 
+<<<<<<< Updated upstream
 Function({String? val})? updateFunc;
 
 // VoidCallback? updateValue;
@@ -25,6 +36,17 @@ Function({String? val})? updateFunc;
      this. pinVal="",
   
     // this.updateValue,
+=======
+  PropertyModel({
+    this.propertyName = "",
+    this.pinNo = "",
+    this.pinIO = "",
+    this.pinVal = "",
+    this.itsOn = "",
+    this.propertyIcon = "",
+    this.componentId = "",
+    this.updateValue,
+>>>>>>> Stashed changes
     this.updateFunc,
   });
 
@@ -59,4 +81,15 @@ Function({String? val})? updateFunc;
 
 
   set setItsOn(String? itsOn) => this.itsOn = itsOn;
+<<<<<<< Updated upstream
+=======
+
+  String? get getPropertyIcon => this.propertyIcon;
+
+  set setPropertyIcon(String? propertyIcon) => this.propertyIcon = propertyIcon;
+
+  String? get getComponentId => this.componentId;
+
+  set setComponentId(String? componentId) => this.componentId = componentId;
+>>>>>>> Stashed changes
 }

@@ -120,6 +120,11 @@ class QuerryClass {
         .child("components")
         .update({
       pm.propertyName!: {
+<<<<<<< Updated upstream
+=======
+        "componentId": pm.componentId!,
+        "iconAsset": pm.propertyIcon!,
+>>>>>>> Stashed changes
         "pinIOStatus": pm.pinIO!,
         "pinNumber": pm.pinNo!,
         "value": pm.pinVal!,
@@ -136,6 +141,7 @@ class QuerryClass {
     });
   }
 
+<<<<<<< Updated upstream
   Future<List<String>> getTabsName(String userId) async {
     var data = await fetchData(userId);
 
@@ -146,6 +152,8 @@ class QuerryClass {
         .toList();
   }
 
+=======
+>>>>>>> Stashed changes
   Future<DataSnapshot> fetchData(String userId) async {
     DataSnapshot snapshot = await databaseReference.child('$userId').get();
 
@@ -158,7 +166,7 @@ class QuerryClass {
       await databaseReference.child('$userId').child("devices").set({
         '34434232': {
           'components': {
-            'isik': {'pinIOStatus': 1, 'pinNumber': 2, 'value': 0}
+            // 'isik': {'pinIOStatus': 1, 'pinNumber': 2, 'value': 0}
           },
           'config': {'place': "conf", 'title': "Akıllı Sistemler"}
         }
@@ -168,4 +176,37 @@ class QuerryClass {
 
     return snapshot;
   }
+<<<<<<< Updated upstream
+=======
+
+  Future<List<Map<String, String>>> fetchedComponentsData() async {
+    ///  HATA:   sadece  name  geliyor...
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('components').get();
+    return querySnapshot.docs
+        .map((e) => {"id": e.id, "name": e.get("cName").toString()}
+            as Map<String, String>)
+        .toList();
+  }
+
+  Future<List<String>> getTabsBody(String userId) async {
+    var data = await fetchData(userId);
+
+    return data
+        .child("devices")
+        .children
+        .map((tmp) => tmp.key.toString())
+        .toList();
+  }
+
+  Future<List<String>> getTabsName(String userId) async {
+    var data = await fetchData(userId);
+
+    return data
+        .child("devices")
+        .children
+        .map((tmp) => tmp.child("config").child("title").value.toString())
+        .toList();
+  }
+>>>>>>> Stashed changes
 }

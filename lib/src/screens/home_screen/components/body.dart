@@ -2,14 +2,21 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:smart360/config/size_config.dart';
 import 'package:smart360/src/database/querry.dart';
 import 'package:smart360/src/models/data_models/propertyModel.dart';
+import 'package:smart360/src/screens/home_screen/components/landing_container.dart';
+import 'package:smart360/src/screens/home_screen/components/property_container.dart';
 import 'package:smart360/src/screens/home_screen/components/property_popup.dart';
 import 'package:smart360/src/screens/home_screen/components/savings_container.dart';
 import 'package:smart360/src/screens/home_screen/components/weather_container.dart';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import 'package:smart360/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'dark_container.dart';
+//akilli sistemler satiri olmyacak +property olmayacak(welcomw tutorial)
+//192.168.1.1 modemin arayuzune baglanilacak sekilde olacak..
 
 QuerryClass querry = QuerryClass();
 
@@ -40,7 +47,11 @@ class Body extends StatelessWidget {
             // ),
             Padding(
               padding: EdgeInsets.all(getProportionateScreenHeight(5)),
-              child: SavingsContainer(model: model),
+              child: LandingContainer(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(getProportionateScreenHeight(5)),
+              child: PropertyContainer(),
             ),
 
             Divider(),
