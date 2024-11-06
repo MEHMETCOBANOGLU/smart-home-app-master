@@ -1,7 +1,3 @@
-Here’s a README file for your SMART360 project:
-
----
-
 # SMART360: Portable Smart Systems and Smart Home/Car Integration
 
 SMART360 is an innovative project focused on developing portable smart systems with seamless integration between smart home and car systems. This project aims to provide users with a comprehensive, remote control solution via a mobile application, allowing them to manage various aspects of their homes, vehicles, and other portable systems from anywhere.
